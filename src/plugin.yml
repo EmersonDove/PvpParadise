@@ -1,0 +1,18 @@
+name: PvpParadise
+main: fencingparry4.bukkit.PvpParadise.PvpParadise
+version: 1.0
+author: Emerson Dove
+description: Says Hi
+commands:
+  Hello:
+    description: Says hello to you
+    usage: /hello
+  createChest:
+    description: Creates a chest where you are standing
+    usage: /createchest
+  chestHelp:
+    description: Tell chest info
+    usage: /chesthelp
+  RandomTp:
+    description: Creates a random tp for the world and puts it into the config
+    usage: /randomTP

@@ -1,0 +1,17 @@
+# Default Configuration file for PvpParadise -have fun!
+# Btw if you delete warps in game your gonna have to fix it in here. :(
+Chest Coords:
+
+
+Teleport Locations:
+- ==: org.bukkit.Location
+  world: PvpParadise
+  x: -68.97603301995095
+  y: 109.0
+  z: -20.490891102242493
+  pitch: 0.0
+  yaw: 0.0
+Chest Amount: 0
+
+
+Teleport Amount: 0
