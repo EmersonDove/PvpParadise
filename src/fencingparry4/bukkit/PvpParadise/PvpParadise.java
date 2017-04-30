@@ -60,7 +60,7 @@ public class PvpParadise extends JavaPlugin {
     }
 
 
-    //------------------------------------CREATE CONFIG------------------------------
+    //------------------------------------CREATE CONFIG--------------------------- ---
 
     private void createConfig() {
         try {
