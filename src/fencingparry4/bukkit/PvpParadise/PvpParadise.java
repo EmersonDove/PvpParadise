@@ -135,7 +135,7 @@ public class PvpParadise extends JavaPlugin {
                 player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.GREEN+ "Welcome to PvpParadise");
                 player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.GREEN  + "To create a random tp location do " + ChatColor.AQUA + "/pp createTP" + ChatColor.GRAY + " (or /pp CT)");
                 player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.GREEN + "To create a chest do " + ChatColor.AQUA + "/pp createChest" + ChatColor.GRAY + " (or /pp CC)");
-                player.sendMessage(ChatColor.BLUE + "PvpParadise>" + ChatColor.GREEN + "To view help on chests and values do " + ChatColor.AQUA + "/pp chestHelp" + ChatColor.GRAY + " (or /pp CH)");
+                player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.GREEN + "To view help on chests and values do " + ChatColor.AQUA + "/pp chestHelp" + ChatColor.GRAY + " (or /pp CH)");
                 return true;
             }
             else if (args[0].equalsIgnoreCase("chestHelp") || args[0].equalsIgnoreCase("CH")) {
