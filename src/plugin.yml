@@ -2,8 +2,7 @@ name: PvpParadise
 main: fencingparry4.bukkit.PvpParadise.PvpParadise
 version: 1.0
 author: Emerson Dove
-description: Says Hi
 commands:
-  pvpparadise:
-    description: All args reateChest randomTP chestHelp hello
-    usage: /command [optionalParam]
+  pp:
+    description: Main Command For PvpParadise
+    usage: /pp [argument]
