@@ -1,29 +1,14 @@
 package fencingparry4.bukkit.PvpParadise;
 
-        import net.minecraft.server.v1_9_R2.RandomPositionGenerator;
-        import org.apache.logging.log4j.core.config.plugins.Plugin;
-        import org.bukkit.Bukkit;
         import org.bukkit.ChatColor;
         import org.bukkit.Location;
-        import org.bukkit.block.Chest;
         import org.bukkit.block.Sign;
-        import org.bukkit.entity.Player;
         import org.bukkit.event.EventHandler;
         import org.bukkit.event.Listener;
         import org.bukkit.event.block.Action;
-        import org.bukkit.event.block.BlockPlaceEvent;
         import org.bukkit.event.block.SignChangeEvent;
         import org.bukkit.event.entity.PlayerDeathEvent;
-        import org.bukkit.event.player.PlayerBedEnterEvent;
         import org.bukkit.event.player.PlayerInteractEvent;
-        import org.bukkit.event.player.PlayerTeleportEvent;
-        import org.bukkit.event.player.PlayerUnleashEntityEvent;
-
-        import java.util.ArrayList;
-        import java.util.Random;
-
-        import static org.bukkit.Bukkit.getPluginManager;
-        import static org.bukkit.Bukkit.getServer;
 
 /**
  * Created by Emerson on 7/23/2016.
@@ -39,7 +24,7 @@ public class SignListeners implements Listener {
 
     @EventHandler
     public void onSignChange(SignChangeEvent e) {
-        if (e.getLine(1).equalsIgnoreCase("[teleport]")) {
+        if (e.getLine(1).equalsIgnoreCase("[teleport]") && e.getLine(0).equalsIgnoreCase("[PvpParadise]")) {
             e.setLine(0, "-=*=-");
             e.setLine(1, "§4RANDOM TELEPORT");
             e.setLine(2, "-=*=-");
@@ -72,14 +57,13 @@ public class SignListeners implements Listener {
                 e.getPlayer().sendMessage(ChatColor.BLUE + ">" + ChatColor.GOLD + "Random number: " + ChatColor.AQUA + randomNum + ChatColor.GOLD + ". Location selected: " + ChatColor.AQUA + "Ope you dont have that yet.");
                 */
 
-
                 e.getPlayer().sendMessage(ChatColor.BLUE + "> " + ChatColor.DARK_GREEN + "You were teleported!");
-            } else if (s.getLine(1).equalsIgnoreCase("God Sign")) {
+            } else if (s.getLine(1).equalsIgnoreCase("God Sign") && s.getLine(0).equalsIgnoreCase("[PvpParadise]")) {
                 e.getPlayer().setAllowFlight(true);
                 e.getPlayer().setMaxHealth(1000);
                 e.getPlayer().sendMessage(ChatColor.BLUE + "> " + ChatColor.GOLD + "GOD MODE ACTIVATED");
                 e.getPlayer().setHealth(1000);
-            } else if (s.getLine(1).equalsIgnoreCase("No God")) {
+            } else if (s.getLine(1).equalsIgnoreCase("No God") && s.getLine(0).equalsIgnoreCase("[PvpParadise]")) {
                 e.getPlayer().setAllowFlight(false);
                 e.getPlayer().setMaxHealth(20);
                 e.getPlayer().sendMessage(ChatColor.BLUE + "> " + ChatColor.GOLD + "GOD MODE DEACTIVATED");

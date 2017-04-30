@@ -16,14 +16,11 @@ import java.util.List;
 
 public class PvpParadise extends JavaPlugin {
     private static Plugin plugin;
-    int chestAmount; //= (int) getConfig().get("Chest Amount");
-    int teleportAmount;//= (int) getConfig().get("Teleport Amount");
+    int chestAmount = (int) getConfig().get("Chest Amount");
+    int teleportAmount = (int) getConfig().get("Teleport Amount");
     ArrayList<Location> teleportLocations; //= (List<Location>) getConfig().getList("Teleport Locations");
     ArrayList<Location> RandomTPLocationArray = new ArrayList<Location>();
     ArrayList<String> RandomChestLocationArray = new ArrayList<String>();
-
-
-
 
     public static Plugin getPlugin() {
         return plugin;
@@ -39,12 +36,11 @@ public class PvpParadise extends JavaPlugin {
         chestAmount = (int) getConfig().get("Chest Amount");
         teleportAmount = (int) getConfig().get("Teleport Amount");
         teleportLocations = (ArrayList<Location>) getConfig().getList("Teleport Locations");
-        System.out.println(ChatColor.GOLD + "-------------------------------------------------------------=*=----------------------------------------------");
+        System.out.println(ChatColor.GOLD + "-------------------------------------------------------------=*=-------------------------------------------------------------");
         System.out.println(teleportLocations);
-        System.out.println(ChatColor.AQUA + "----------------------------------------------=*=-------------------------------------------------------------");
+        System.out.println(ChatColor.AQUA + "-------------------------------------------------------------=*=-------------------------------------------------------------");
         //SignListeners.setTeleportLocations(teleportLocations.get("PvpParadise"));
     }
-
 
 
     @Override
@@ -62,7 +58,6 @@ public class PvpParadise extends JavaPlugin {
         saveConfig();
         plugin = null;
     }
-
 
 
     //------------------------------------CREATE CONFIG------------------------------
@@ -86,8 +81,7 @@ public class PvpParadise extends JavaPlugin {
 
     }
 
-
-
+/*
     //---------------------------------------COMMANDS ARE HERE----------------------------------------------------------\\
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 
@@ -104,8 +98,8 @@ public class PvpParadise extends JavaPlugin {
             player.sendMessage(ChatColor.BLUE + "> " + ChatColor.DARK_GREEN + "The chest values are as follows: 1: ALL IRON. 2: IRON GOLD MIX. 3: ALL GOLD. 4: GOLD AND DIAMOND MIX. 5: ALL DIAMOND");
             player.sendMessage(ChatColor.BLUE + "> " + ChatColor.DARK_GREEN + "You can destroy the chest created to turn it. Only the coords are stored in the config not the orientation and it isn't given any special IDS");
             player.sendMessage(ChatColor.BLUE + "> " + ChatColor.GRAY + "----------------" + ChatColor.BLUE + "<");
+            return true;
         } else if (cmd.getName().equalsIgnoreCase("createChest") && sender instanceof Player) {
-
             Player player = (Player) sender;
 
             Location pl = player.getLocation();
@@ -128,6 +122,51 @@ public class PvpParadise extends JavaPlugin {
             player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.GREEN + "Teleport location " + ChatColor.AQUA + teleportAmount + ChatColor.GREEN + " has been created at " + ChatColor.AQUA + RandomTPLocation + ChatColor.GREEN + ".");
             player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.DARK_RED + "You must restart the server for the locations to load");
             return true;
+        }
+        return false;
+    }
+    */
+    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+        if(commandLabel.equalsIgnoreCase("pvpparadise")) {
+
+            Player player = (Player) sender;
+            if (args.length == 0) {
+                player.sendMessage(ChatColor.BLUE + "PvpParadise>" + ChatColor.GREEN + "Do /help pvpparadise for more information");
+                return true;
+            }
+            else if (args[0].equalsIgnoreCase("chestHelp")) {
+                player.sendMessage(ChatColor.BLUE + "> " + ChatColor.GRAY + "----------------" + ChatColor.BLUE + "<");
+                player.sendMessage(ChatColor.BLUE + "> " + ChatColor.DARK_GREEN + "The chest values are as follows: 1: ALL IRON. 2: IRON GOLD MIX. 3: ALL GOLD. 4: GOLD AND DIAMOND MIX. 5: ALL DIAMOND");
+                player.sendMessage(ChatColor.BLUE + "> " + ChatColor.DARK_GREEN + "You can destroy the chest created to turn it. Only the coords are stored in the config not the orientation and it isn't given any special IDS");
+                player.sendMessage(ChatColor.BLUE + "> " + ChatColor.GRAY + "----------------" + ChatColor.BLUE + "<");
+                return true;
+            }
+            else if (args[0].equalsIgnoreCase("createChest")) {
+                Location pl = player.getLocation();
+                World world = player.getWorld();
+                Location chestLocation = new Location(world, pl.getX(), pl.getY(), pl.getZ());
+                chestLocation.getBlock().setType(Material.CHEST);
+                ++chestAmount;
+                String ChestLocationToBeInArray = "" + chestLocation;
+                RandomChestLocationArray.add(ChestLocationToBeInArray);
+                player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.GREEN + "Chest " + ChatColor.AQUA + chestAmount + ChatColor.GREEN + " has been created at " + ChatColor.AQUA + chestLocation + ChatColor.GREEN + ".");
+                player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.DARK_RED + "You must restart the server for the locations to load");
+                return true;
+            }
+            else if (args[0].equalsIgnoreCase("randomTP")) {
+                Location pll = player.getLocation();
+                World worldd = player.getWorld();
+                Location RandomTPLocation = new Location(worldd, pll.getX(), pll.getY(), pll.getZ());
+                RandomTPLocationArray.add(RandomTPLocation);
+                teleportAmount++;
+                player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.GREEN + "Teleport location " + ChatColor.AQUA + teleportAmount + ChatColor.GREEN + " has been created at " + ChatColor.AQUA + RandomTPLocation + ChatColor.GREEN + ".");
+                player.sendMessage(ChatColor.BLUE + "PvpParadise> " + ChatColor.DARK_RED + "You must restart the server for the locations to load");
+                return true;
+            }
+            else if (args[0].equalsIgnoreCase("hello")) {
+                player.sendMessage(ChatColor.BLUE + "PvpParadise>" + ChatColor.GREEN + "Hello" + ChatColor.AQUA + player.getName());
+                return true;
+            }
         }
         return false;
     }
